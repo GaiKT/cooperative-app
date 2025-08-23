@@ -7,6 +7,7 @@ A Next.js application with PostgreSQL backend for managing cooperatives and thei
 - **Frontend**: Next.js 15 with React 19
 - **Backend**: Next.js API routes
 - **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: NextAuth.js with credentials provider
 - **Containerization**: Docker & Docker Compose
 - **Styling**: TailwindCSS
 
@@ -16,14 +17,22 @@ A Next.js application with PostgreSQL backend for managing cooperatives and thei
 cooperative-app/
 ├── app/
 │   ├── api/
+│   │   ├── auth/            # NextAuth authentication endpoints
 │   │   ├── health/          # Database health check endpoint
 │   │   ├── users/           # User management API
 │   │   └── cooperatives/    # Cooperative management API
+│   ├── auth/
+│   │   ├── signin/          # Sign in page
+│   │   └── signup/          # Sign up page
 │   ├── globals.css
 │   ├── layout.tsx
-│   └── page.tsx            # Main page with database status
+│   └── page.tsx            # Main page with auth status
+├── components/
+│   ├── auth-provider.tsx   # NextAuth session provider
+│   └── navigation.tsx      # Navigation with auth buttons
 ├── lib/
-│   └── prisma.ts           # Prisma client configuration
+│   ├── auth.ts            # NextAuth configuration
+│   └── prisma.ts          # Prisma client configuration
 ├── prisma/
 │   └── schema.prisma       # Database schema
 ├── docker-compose.yml      # Docker services configuration
@@ -121,6 +130,13 @@ This is the recommended approach for development:
 
 ## API Endpoints
 
+### Authentication
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/signin` - Sign in user (NextAuth)
+- `POST /api/auth/signout` - Sign out user (NextAuth)
+- `GET /api/auth/session` - Get current session (NextAuth)
+
+### Application
 - `GET /api/health` - Database health check and statistics
 - `GET /api/users` - Get all users with their memberships
 - `POST /api/users` - Create a new user
@@ -129,8 +145,11 @@ This is the recommended approach for development:
 
 ## Database Schema
 
-The app includes three main models:
-- **User**: Application users
+The app includes these main models:
+- **User**: Application users with authentication
+- **Account**: NextAuth account linking
+- **Session**: NextAuth session management  
+- **VerificationToken**: NextAuth email verification
 - **Cooperative**: Cooperative organizations
 - **Membership**: Relationship between users and cooperatives
 
@@ -155,7 +174,12 @@ Create a `.env` file with:
 ```env
 DATABASE_URL="postgresql://postgres:postgres@localhost:5432/postgres"
 NEXTAUTH_URL="http://localhost:3000"
-NEXTAUTH_SECRET="your-secret-key-here"
+NEXTAUTH_SECRET="your-generated-secret-key-here"
+```
+
+**Important**: Generate a proper secret for production:
+```bash
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 
 ## Development
