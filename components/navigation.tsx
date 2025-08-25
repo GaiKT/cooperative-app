@@ -16,7 +16,7 @@ export default function Navigation() {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white">
-              Cooperative App
+              ระบบสหกรณ์
             </Link>
           </div>
           
@@ -24,13 +24,13 @@ export default function Navigation() {
             {session ? (
               <>
                 <span className="text-gray-700 dark:text-gray-300">
-                  Welcome, {session.user?.name || session.user?.email}
+                  ยินดีต้อนรับ, {session.user?.name || session.user?.email}
                 </span>
                 <button
                   onClick={() => signOut()}
                   className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium"
                 >
-                  Sign Out
+                  ออกจากระบบ
                 </button>
               </>
             ) : (
@@ -39,13 +39,13 @@ export default function Navigation() {
                   href="/auth/signin"
                   className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Sign In
+                  เข้าสู่ระบบ
                 </Link>
                 <Link
                   href="/auth/signup"
                   className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
                 >
-                  Sign Up
+                  สร้างบัญชี
                 </Link>
               </>
             )}

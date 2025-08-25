@@ -41,35 +41,35 @@ export default function Home() {
       <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
         <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
           <div className="text-center sm:text-left">
-            <h1 className="text-4xl font-bold mb-4">Cooperative App</h1>
+            <h1 className="text-4xl font-bold mb-4">ระบบสหกรณ์</h1>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              A Next.js application with PostgreSQL backend for managing cooperatives
+              แอปพลิเคชัน Next.js ที่มีแบ็กเอนด์ PostgreSQL สำหรับการจัดการสหกรณ์
             </p>
           </div>
 
           {/* Authentication Status */}
           <div className="bg-blue-100 dark:bg-blue-900 p-6 rounded-lg w-full max-w-md">
-            <h2 className="text-xl font-semibold mb-4">Authentication Status</h2>
-            {status === 'loading' && <p>Checking authentication...</p>}
+            <h2 className="text-xl font-semibold mb-4">สถานะการตรวจสอบสิทธิ์</h2>
+            {status === 'loading' && <p>กำลังตรวจสอบการตรวจสอบสิทธิ์...</p>}
             {status === 'authenticated' && session && (
               <div className="text-green-600 dark:text-green-400">
-                <p>✅ Signed in as {session.user?.name || session.user?.email}</p>
+                <p>✅ ยินดีต้อนรับ, {session.user?.name || session.user?.email}</p>
               </div>
             )}
             {status === 'unauthenticated' && (
               <div className="text-orange-600 dark:text-orange-400">
-                <p>🔐 Not signed in</p>
-                <p className="text-sm">Sign in to access personalized features</p>
+                <p>🔐 ยังไม่ได้เข้าสู่ระบบ</p>
+                <p className="text-sm">เข้าสู่ระบบเพื่อเข้าถึงฟีเจอร์ที่ปรับแต่งได้</p>
               </div>
             )}
           </div>
 
           <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg w-full max-w-md">
-            <h2 className="text-xl font-semibold mb-4">Database Status</h2>
-            {loading && <p>Checking database connection...</p>}
+            <h2 className="text-xl font-semibold mb-4">สถานะฐานข้อมูล</h2>
+            {loading && <p>กำลังตรวจสอบการเชื่อมต่อฐานข้อมูล...</p>}
             {error && (
               <div className="text-red-600 dark:text-red-400">
-                <p>❌ Database Error</p>
+                <p>❌ เกิดข้อผิดพลาดในฐานข้อมูล</p>
                 <p className="text-sm">{error}</p>
               </div>
             )}
