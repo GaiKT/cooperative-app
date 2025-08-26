@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 
     if (!email || !password) {
       return NextResponse.json(
-        { error: 'Email and password are required' },
+        { error: 'อีเมลและรหัสผ่านเป็นข้อมูลที่จำเป็น' },
         { status: 400 }
       )
     }
@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
 
     if (existingUser) {
       return NextResponse.json(
-        { error: 'User already exists with this email' },
+        { error: 'มีผู้ใช้ที่ลงทะเบียนด้วยอีเมลนี้แล้ว' },
         { status: 400 }
       )
     }
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       { 
-        message: 'User created successfully',
+        message: 'สร้างบัญชีผู้ใช้สำเร็จ',
         user: userWithoutPassword 
       },
       { status: 201 }

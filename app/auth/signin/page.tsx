@@ -17,24 +17,25 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
+import { toast } from 'react-toastify';
 
 // Zod schema for form validation
 const signInSchema = z.object({
   email: z
     .string()
-    .min(1, 'Email is required')
-    .email('Invalid email address'),
+    .min(1, 'อีเมลเป็นข้อมูลที่จำเป็น')
+    .email('รูปแบบอีเมลไม่ถูกต้อง'),
   password: z
     .string()
-    .min(1, 'Password is required')
-    .min(6, 'Password must be at least 6 characters'),
+    .min(1, 'รหัสผ่านเป็นข้อมูลที่จำเป็น')
+    .min(6, 'รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร'),
 })
 
 type SignInFormValues = z.infer<typeof signInSchema>
 
 export default function SignIn() {
-  const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const router = useRouter()
 
   const form = useForm<SignInFormValues>({
@@ -47,7 +48,9 @@ export default function SignIn() {
 
   const onSubmit = async (values: SignInFormValues) => {
     setLoading(true)
-    setError('')
+    
+    // Show loading toast
+    const loadingToastId = toast.loading('กำลังเข้าสู่ระบบ...')
 
     try {
       const result = await signIn('credentials', {
@@ -57,15 +60,33 @@ export default function SignIn() {
       })
 
       if (result?.error) {
-        setError('Invalid credentials')
+        toast.update(loadingToastId, {
+          render: 'ข้อมูลประจำตัวไม่ถูกต้อง',
+          type: 'error',
+          isLoading: false,
+          autoClose: 5000,
+        })
+        setError('ข้อมูลประจำตัวไม่ถูกต้อง')
       } else {
-        // Refresh the session
+        toast.update(loadingToastId, {
+          render: 'เข้าสู่ระบบสำเร็จ!',
+          type: 'success',
+          isLoading: false,
+          autoClose: 3000,
+        })
+        setError('')
         await getSession()
         router.push('/')
         router.refresh()
       }
     } catch (error) {
-      setError('An error occurred during sign in')
+      toast.update(loadingToastId, {
+        render: 'เกิดข้อผิดพลาดในการเข้าสู่ระบบ',
+        type: 'error',
+        isLoading: false,
+        autoClose: 5000,
+      })
+      setError('เกิดข้อผิดพลาดในการเข้าสู่ระบบ')
     } finally {
       setLoading(false)
     }

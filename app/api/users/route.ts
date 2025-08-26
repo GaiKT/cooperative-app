@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     
     if (!email) {
       return NextResponse.json(
-        { error: 'Email is required' },
+        { error: 'อีเมลเป็นข้อมูลที่จำเป็น' },
         { status: 400 }
       )
     }
