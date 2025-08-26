@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Navigation from "@/components/navigation";
+import ProtectedRoute from "@/components/protected-route";
 
 interface HealthData {
   message: string;
@@ -35,13 +36,14 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <Navigation />
-      
-      <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-        <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-          <div className="text-center sm:text-left">
-            <h1 className="text-4xl font-bold mb-4">ระบบสหกรณ์</h1>
+    <ProtectedRoute>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <Navigation />
+        
+        <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+          <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+            <div className="text-center sm:text-left">
+              <h1 className="text-4xl font-bold mb-4">ระบบสหกรณ์</h1>
             <p className="text-lg text-gray-600 dark:text-gray-300">
               แอปพลิเคชัน Next.js ที่มีแบ็กเอนด์ PostgreSQL สำหรับการจัดการสหกรณ์
             </p>
@@ -106,5 +108,6 @@ export default function Home() {
         </main>
       </div>
     </div>
+    </ProtectedRoute>
   );
 }

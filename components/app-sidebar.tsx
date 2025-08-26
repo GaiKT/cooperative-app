@@ -14,27 +14,27 @@ import {
 // Menu items.
 const items = [
   {
-    title: "Home",
+    title: "ลงทะเบียน",
     url: "#",
     icon: Home,
   },
   {
-    title: "Inbox",
+    title: "กล่องข้อความ",
     url: "#",
     icon: Inbox,
   },
   {
-    title: "Calendar",
+    title: "ปฏิทิน",
     url: "#",
     icon: Calendar,
   },
   {
-    title: "Search",
+    title: "ค้นหา",
     url: "#",
     icon: Search,
   },
   {
-    title: "Settings",
+    title: "ตั้งค่า",
     url: "#",
     icon: Settings,
   },
@@ -44,8 +44,8 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+        <SidebarGroup className="mt-14">
+          {/* <SidebarGroupLabel>Application</SidebarGroupLabel> */}
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (

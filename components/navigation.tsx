@@ -14,7 +14,8 @@ export default function Navigation() {
     <nav className="bg-white dark:bg-gray-800 shadow-sm border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          <div className="flex items-center">
+
+          <div className="hidden lg:flex lg:items-center">
             <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white">
               ระบบสหกรณ์
             </Link>
@@ -24,7 +25,7 @@ export default function Navigation() {
             {session ? (
               <>
                 <span className="text-gray-700 dark:text-gray-300">
-                  ยินดีต้อนรับ, {session.user?.name || session.user?.email}
+                  ยินดีต้อนรับ, <span className='font-semibold'>{session.user?.name || session.user?.email}</span>
                 </span>
                 <button
                   onClick={() => signOut()}
