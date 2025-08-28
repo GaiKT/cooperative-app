@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import { AppSidebar } from "@/components/app-sidebar"
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import Navigation from "@/components/navigation"
+import { AppBreadcrumb } from './app-breadcrumb'  
 
 interface ConditionalLayoutProps {
   children: React.ReactNode
@@ -27,8 +28,13 @@ export default function ConditionalLayout({ children }: ConditionalLayoutProps) 
         <AppSidebar />
         <div className="flex-1 flex flex-col">
           <Navigation />
-          <main className="flex-1 bg-gray-50 dark:bg-gray-900">
-            {children}
+          <main className="flex-1">
+            <div className='py-3 px-8 border-b bg-white dark:bg-gray-900'>
+              <AppBreadcrumb />
+            </div>
+            <div className="p-6">
+              {children}
+            </div>
           </main>
         </div>
       </div>

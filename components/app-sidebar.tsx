@@ -20,22 +20,22 @@ import { ModeToggle } from "./handle-theme"
 const items = [
   {
     title: "หน้าแรก",
-    url: "/home",
+    url: "/",
     icon: Home,
   },
   {
     title: "ยื่นขอรับสวัสดิการ",
-    url: "#",
+    url: "/welfare",
     icon: FilePlus,
   },
   {
     title: "ตรวจสอบสถานะ",
-    url: "#",
+    url: "/status",
     icon: Radio,
   },
   {
     title: "ระเบียบ",
-    url: "#",
+    url: "/regulations",
     icon: Book,
   },
   {
@@ -59,7 +59,7 @@ export function AppSidebar() {
               className="mb-4 border"
             /> */}
           </div>
-          <h2 className="text-lg font-semibold">welfare Djccoop</h2>
+          <h2 className="text-lg font-semibold">Welfare Djccoop</h2>
         </div>
       </SidebarHeader>
       <SidebarContent>

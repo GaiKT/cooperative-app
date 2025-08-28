@@ -99,9 +99,9 @@ export default function SignIn() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="flex flex-col justify-center items-center">
-          <div className="flex justify-center h-24 w-24 border rounded-full">
+          <div className="flex justify-center h-50 w-50 border rounded-full mb-4">
               {/* <Image
-                src="/logo.png"
+                src="/logo/logo.png"
                 alt="Logo"
                 width={100}
                 height={100}
@@ -111,18 +111,6 @@ export default function SignIn() {
           <h1 className='text-center text-xl font-bold text-gray-900 dark:text-white'>
             ระบบสวัสดิการเพื่อการสงเคราะห์สมาชิกออนไลน์ สหกรณ์ออมทรัพย์สื่อสารทหาร จำกัด
           </h1>
-          {/* <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
-            หรือ{' '}
-            <Link href="/auth/signup" className="font-medium text-blue-600 hover:text-blue-500">
-              สร้างบัญชีใหม่
-            </Link>
-          </div>
-          {/* <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
-            หรือ{' '}
-            <Link href="/auth/signup" className="font-medium text-blue-600 hover:text-blue-500">
-              สร้างบัญชีใหม่
-            </Link>
-          </p> */}
         </div>
 
         <Form {...form}>
@@ -178,6 +166,11 @@ export default function SignIn() {
             >
               {loading ? 'กำลังเข้าสู่ระบบ...' : 'เข้าสู่ระบบ'}
             </Button>
+            <p className="text-center text-sm text-gray-600 dark:text-gray-400">
+              <Link href="/auth/signup" className="font-medium text-blue-600 hover:text-blue-500">
+                สร้างบัญชีเข้าสู่ระบบครั้งแรก
+              </Link>
+            </p>
 
             <div className='mt-6 text-center text-gray-500'>
                 <p>ติดต่อสอบถามเจ้าหน้าที่</p>
