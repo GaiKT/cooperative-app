@@ -8,7 +8,7 @@ export default function Navigation() {
   const { data: session, status } = useSession()
 
   if (status === 'loading') {
-    return <div className="p-4">Loading...</div>
+    return <div className="h-16 bg-white dark:bg-gray-800 shadow-sm border-b p-4">Loading...</div>
   }
 
   return (

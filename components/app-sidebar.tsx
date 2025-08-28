@@ -10,8 +10,11 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarHeader
+  SidebarHeader,
+  SidebarFooter
 } from "@/components/ui/sidebar"
+
+import { ModeToggle } from "./handle-theme"
 
 // Menu items.
 const items = [
@@ -78,6 +81,11 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <div className="flex justify-center items-center p-4">
+          <ModeToggle />
+        </div>
+      </SidebarFooter>
     </Sidebar>
   )
 }

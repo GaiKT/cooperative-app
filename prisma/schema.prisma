@@ -10,7 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Example models for a cooperative app
 model User {
   id        String   @id @default(cuid())
   email     String   @unique
@@ -81,7 +80,7 @@ model Cooperative {
   @@map("cooperatives")
 }
 
-model Membership {
+model Membership {  
   id            String   @id @default(cuid())
   userId        String
   cooperativeId Int
@@ -94,5 +93,15 @@ model Membership {
   
   @@unique([userId, cooperativeId])
   @@map("memberships")
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("services")
 }
 
