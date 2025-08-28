@@ -18,6 +18,9 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { toast } from 'react-toastify';
+import Image from 'next/image'
+import { FaPhoneSquareAlt } from "react-icons/fa";
+import { FaLine } from "react-icons/fa6";
 
 // Zod schema for form validation
 const signInSchema = z.object({
@@ -95,16 +98,31 @@ export default function SignIn() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
-            เข้าสู่ระบบด้วยบัญชีของคุณ
-          </h2>
-          <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
+        <div className="flex flex-col justify-center items-center">
+          <div className="flex justify-center h-24 w-24 border rounded-full">
+              {/* <Image
+                src="/logo.png"
+                alt="Logo"
+                width={100}
+                height={100}
+                className="mb-4"
+              /> */}
+          </div>
+          <h1 className='text-center text-xl font-bold text-gray-900 dark:text-white'>
+            ระบบสวัสดิการเพื่อการสงเคราะห์สมาชิกออนไลน์ สหกรณ์ออมทรัพย์สื่อสารทหาร จำกัด
+          </h1>
+          {/* <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
             หรือ{' '}
             <Link href="/auth/signup" className="font-medium text-blue-600 hover:text-blue-500">
               สร้างบัญชีใหม่
             </Link>
-          </p>
+          </div>
+          {/* <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
+            หรือ{' '}
+            <Link href="/auth/signup" className="font-medium text-blue-600 hover:text-blue-500">
+              สร้างบัญชีใหม่
+            </Link>
+          </p> */}
         </div>
 
         <Form {...form}>
@@ -114,11 +132,11 @@ export default function SignIn() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>ที่อยู่อีเมล</FormLabel>
+                  {/* <FormLabel>หมายเลขสมาชิก</FormLabel> */}
                   <FormControl>
                     <Input
-                      placeholder="กรอกที่อยู่อีเมลของคุณ"
-                      type="email"
+                      placeholder="หมายเลขสมาชิก"
+                      type="text"
                       autoComplete="email"
                       {...field}
                     />
@@ -133,10 +151,10 @@ export default function SignIn() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>รหัสผ่าน</FormLabel>
+                  {/* <FormLabel>รหัสผ่าน</FormLabel> */}
                   <FormControl>
                     <Input
-                      placeholder="กรอกรหัสผ่านของคุณ"
+                      placeholder="รหัสผ่าน"
                       type="password"
                       autoComplete="current-password"
                       {...field}
@@ -160,6 +178,14 @@ export default function SignIn() {
             >
               {loading ? 'กำลังเข้าสู่ระบบ...' : 'เข้าสู่ระบบ'}
             </Button>
+
+            <div className='mt-6 text-center text-gray-500'>
+                <p>ติดต่อสอบถามเจ้าหน้าที่</p>
+                <div className='flex gap-3 justify-center mt-2 text-sm dark:text-gray-400'>        
+                  <p><FaPhoneSquareAlt className="inline-block mr-1 text-green-600 h-5" /> 02-082-7290</p>
+                  <p><FaLine className="inline-block mr-1 text-green-600 h-5" /> @djccoop</p>
+                </div>
+            </div>
           </form>
         </Form>
       </div>

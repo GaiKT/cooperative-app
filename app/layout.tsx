@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import AuthProvider from "@/components/auth-provider";
-import { AppSidebar } from "@/components/app-sidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import ConditionalLayout from "@/components/conditional-layout";
 import { ToastContainer } from 'react-toastify';
 
 import "./globals.css";
@@ -33,7 +32,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          {children}
+          <ConditionalLayout>
+            {children}
+          </ConditionalLayout>
           <ToastContainer
             position="top-right"
             autoClose={5000}

@@ -1,4 +1,5 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { Book, Home, Radio, Key , FilePlus  } from "lucide-react"
+import Image from "next/image"
 
 import {
   Sidebar,
@@ -9,43 +10,58 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarHeader
 } from "@/components/ui/sidebar"
 
 // Menu items.
 const items = [
   {
-    title: "ลงทะเบียน",
-    url: "#",
+    title: "หน้าแรก",
+    url: "/home",
     icon: Home,
   },
   {
-    title: "กล่องข้อความ",
+    title: "ยื่นขอรับสวัสดิการ",
     url: "#",
-    icon: Inbox,
+    icon: FilePlus,
   },
   {
-    title: "ปฏิทิน",
+    title: "ตรวจสอบสถานะ",
     url: "#",
-    icon: Calendar,
+    icon: Radio,
   },
   {
-    title: "ค้นหา",
+    title: "ระเบียบ",
     url: "#",
-    icon: Search,
+    icon: Book,
   },
   {
-    title: "ตั้งค่า",
+    title: "เปลี่ยนรหัสผ่าน",
     url: "#",
-    icon: Settings,
+    icon: Key,
   },
 ]
 
 export function AppSidebar() {
   return (
     <Sidebar>
+      <SidebarHeader>
+        <div className="flex gap-2 justify-center items-center p-1">
+          <div className="h-10 w-10 border rounded-full">
+            {/* <Image
+              src="/logo.png"
+              alt="Logo"
+              width={20}
+              height={20}
+              className="mb-4 border"
+            /> */}
+          </div>
+          <h2 className="text-lg font-semibold">welfare Djccoop</h2>
+        </div>
+      </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup className="mt-14">
-          {/* <SidebarGroupLabel>Application</SidebarGroupLabel> */}
+        <SidebarGroup>
+          <SidebarGroupLabel>Discover</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (

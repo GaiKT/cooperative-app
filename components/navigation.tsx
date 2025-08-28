@@ -2,6 +2,7 @@
 
 import { useSession, signOut } from 'next-auth/react'
 import Link from 'next/link'
+import { SidebarTrigger } from './ui/sidebar'
 
 export default function Navigation() {
   const { data: session, status } = useSession()
@@ -14,13 +15,9 @@ export default function Navigation() {
     <nav className="bg-white dark:bg-gray-800 shadow-sm border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-
-          <div className="hidden lg:flex lg:items-center">
-            <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white">
-              ระบบสหกรณ์
-            </Link>
+          <div className='flex items-center'>
+            <SidebarTrigger />
           </div>
-          
           <div className="flex items-center space-x-4">
             {session ? (
               <>
